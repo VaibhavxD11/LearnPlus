@@ -1,0 +1,41 @@
+.footer-contact i {
+  font-size: 2.2rem;
+  color: var(--main-color);
+}
+.footer-social i {
+  color: var(--main-color);
+  font-size: 1.5rem;
+}
+
+.footer-copyright,
+.footer-contact {
+  border-top: 1px solid var(--border-color-2);
+}
+
+.links-pages a {
+  color: var(--balck-70);
+}
+
+.links-pages h3 span {
+  color: var(--main-color);
+}
+.links-pages h3 a:hover {
+  color: var(--balck-70);
+}
+.nav-item {
+  width: max-content;
+  position: relative;
+}
+.footer-links .nav-item::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 0.2rem;
+  background-color: var(--main-color);
+  transition: width 0.3s ease;
+}
+.footer-links .nav-item:hover::before {
+  width: 100%;
+}

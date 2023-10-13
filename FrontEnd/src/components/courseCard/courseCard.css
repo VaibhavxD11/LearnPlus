@@ -1,0 +1,25 @@
+.course-header {
+  position: relative;
+}
+.course-header span {
+  position: absolute;
+  top: 5%;
+  right: 4%;
+  color: var(--WHITE);
+}
+.course h3 {
+  transition: color 0.2s;
+}
+.course:hover h3 {
+  color: var(--main-color);
+}
+
+.footer-creator img {
+  width:2.5rem;
+}
+.footer-creator span{
+    color: var(--black-70);
+}
+.footer-stars span{
+    color: var(--orange);
+}

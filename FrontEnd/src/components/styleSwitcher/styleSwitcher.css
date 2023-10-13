@@ -1,0 +1,81 @@
+.style-switcher {
+  background-color: var(--white);
+  width: 15rem;
+  position: fixed;
+  top: 0;
+  right: -15rem;
+  height: 100%;
+  z-index: 30;
+  box-shadow: var(--shadow);
+  transition: right 0.3s ease-in;
+}
+.style-switcher.open {
+  right: 0;
+}
+.style-switcher-toggler {
+  position: absolute;
+  top: 20vh;
+  left: -40px;
+  color: var(--WHITE);
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px 0 0 8px;
+}
+.style-switcher-toggler i {
+  margin: auto;
+}
+.style-switcher h4 {
+  border-bottom: 1px solid var(--border-color-1);
+}
+.theme-colors button {
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 50%;
+  padding-top: 0.5rem;
+  transition: 0.3s;
+}
+
+.theme-colors {
+  border-bottom: 1px solid var(--border-color-1);
+}
+.style-switcher-item {
+  border-bottom: 1px solid var(--border-color-1);
+}
+
+.theme-colors .color-1 {
+  border: 8px solid;
+  border-color: hsl(0, 74%, 61%);
+}
+.theme-colors .color-2 {
+  border: 8px solid;
+  border-color: hsl(230, 74%, 61%);
+}
+.theme-colors .color-3 {
+  border: 8px solid;
+  border-color: hsl(36, 74%, 61%);
+}
+.theme-colors .color-4 {
+  border: 8px solid;
+  border-color: hsl(277, 74%, 61%);
+}
+.theme-colors .color-5 {
+  border: 8px solid;
+  border-color: hsl(164, 74%, 61%);
+}
+
+.theme-colors .color-1.active {
+  background-color: hsl(0, 74%, 61%);
+}
+.theme-colors .color-2.active {
+  background-color: hsl(230, 74%, 61%);
+}
+.theme-colors .color-3.active {
+  background-color: hsl(36, 74%, 61%);
+}
+.theme-colors .color-4.active {
+  background-color: hsl(277, 74%, 61%);
+}
+.theme-colors .color-5.active {
+  background-color: hsl(164, 74%, 61%);
+}

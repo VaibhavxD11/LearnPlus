@@ -1,0 +1,15 @@
+.page-item .page-link {
+  color: var(--black-70);
+  border: none;
+  background-color: transparent;
+}
+.page-item {
+  margin: 0 0.2rem;
+}
+.page-item.active .page-link {
+  background-color: var(--main-color) !important;
+}
+.page-item .page-link:hover {
+  background-color: var(--main-color);
+  color: var(--WHITE);
+}

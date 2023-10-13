@@ -1,0 +1,119 @@
+/* -----
+! glass effect
+ ----- */
+body.glass-effect {
+  --white: hsla(0, 0%, 100%, 0.25);
+  --border-color-2: hsla(0, 0%, 100%, 0.4);
+  --shadow: none;
+  --border-color-1: hsl(0, 0%, 0%, 0.1);
+  background-image: linear-gradient(
+    to right,
+    var(--body-gradient-bg-color-1),
+    var(--body-gradient-bg-color-2)
+  );
+  background-attachment: fixed;
+  padding: 20px 10px;
+  --backdrop-filter-blur: blur(5px);
+}
+@media (min-width: 992px) {
+  body.glass-effect {
+    padding: 30px 20px;
+  }
+}
+@media (min-width: 1200px) {
+  body.glass-effect {
+    padding: 35px 25px;
+  }
+}
+body.glass-effect::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--WHITE);
+  opacity: 0.3;
+  z-index: -3;
+}
+body.glass-effect .main-wrapper {
+  max-width: 1200px;
+  border: 0.1rem solid var(--border-color-2);
+  margin: auto;
+  border-radius: 1.2rem;
+  background-color: var(--white);
+}
+
+body.glass-effect .box {
+  border: 1px solid var(--border-color-2);
+}
+body.glass-effect .header-backdrop,
+body.glass-effect .style-switcher,
+body.glass-effect .box,
+body.glass-effect .sub-menu {
+  -webkit-backdrop-filter: var(--backdrop-filter-blur);
+  -moz-backdrop-filter: var(--backdrop-filter-blur);
+  -o-backdrop-filter: var(--backdrop-filter-blur);
+  backdrop-filter: var(--backdrop-filter-blur);
+}
+
+/*! dark mode glass effect */
+
+body.dark-mode.glass-effect {
+  --border-color-2: hsla(0, 0%, 100%, 0.07%);
+  --border-color-1: hsl(0, 0%, 100%, 0.15);
+  --white: hsla(0, 0%, 100%, 0.05);
+  --shadow: none;
+}
+body.dark-mode.glass-effect::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--BLACK);
+  opacity: 0.5;
+  z-index: -1;
+}
+/* buble */
+
+body.glass-effect .main-wrapper::before,
+body.glass-effect .main-wrapper::after {
+  content: "";
+  position: fixed;
+  z-index: -2;
+  border-radius: 50%;
+}
+
+body.glass-effect .main-wrapper::before {
+  width: 110px;
+  height: 110px;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--decoration-bg-color-1),
+    var(--WHITE)
+  );
+  top: 20%;
+  left: -50px;
+}
+body.glass-effect .main-wrapper::after {
+  height: 160px;
+  width: 160px;
+  bottom: 20%;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--decoration-bg-color-2),
+    var(--WHITE)
+  );
+  right: -75px;
+}
+
+@media (min-width: 1200px) {
+  body.glass-effect .main-wrapper::after {
+    right: calc(50% - 650px);
+  }
+  body.glass-effect .main-wrapper::before {
+    left: calc(50% - 650px);
+  }
+}

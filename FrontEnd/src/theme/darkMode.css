@@ -1,0 +1,14 @@
+/* -----
+! dark mode
+ ----- */
+ body.dark-mode {
+    --body-bg-color: hsl(240, 10%, 19%);
+    --black-70: hsl(0, 0%, 87%);
+    --balck-90: hsl(0, 0%, 100%);
+    --shadow: 0 0 10px hsla(0, 0%, 0%, 0.08);
+    --white: hsl(240, 8%, 21%);
+    --select-box-bg-color: hsl(240, 8%, 21%);
+    --border-color-2: hsl(240, 9%, 25%);
+    --border-color-1: hsl(240, 9%, 30%);
+  }
+  

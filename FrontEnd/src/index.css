@@ -1,0 +1,202 @@
+/* -----
+ ! 01. reset styles  
+ ----- */
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+button {
+  background: transparent;
+  border: none;
+}
+
+/* -----
+ ! 02. googel fonts  
+ ----- */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* -----
+! 03. variables 
+----- */
+/*! root variables */
+:root {
+  --orange: hsl(36, 80%, 50%);
+  --white: hsl(0, 0%, 100%);
+  --WHITE: hsl(0, 0%, 100%);
+  --BLACK: hsl(0, 0%, 0%);
+  --balck-90: hsl(0, 0%, 10%);
+  --black-70: hsl(0, 0%, 30%);
+  --black-alpha-40: hsla(0, 0%, 0%, 0.4);
+  --yellow-light: hsl(44, 95%, 83%);
+  --green-light: hsl(158, 68%, 75%);
+  --red-light: hsl(0, 84%, 80%);
+  --orange-light: hsl(22, 85%, 80%);
+  --select-box-bg-color: hsl(0, 0%, 100%);
+  --border-color-1: hsl(0, 0%, 90%);
+}
+
+/* -----
+! 04. base 
+ ----- */
+body {
+  background-color: var(--body-bg-color);
+  color: var(--black-70);
+  font-family: "Poppins", sans-serif,arial;
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--balck-90);
+  line-height: 1.3;
+}
+html {
+  font-size: 0.8rem;
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 567px) {
+  html {
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 992px) {
+  html {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1200px) {
+  html {
+    font-size: 1.1rem;
+  }
+}
+
+::selection {
+  color: var(--WHITE);
+  background-color: var(--main-color);
+}
+section:not(.banner, .facts, .single-course) {
+  padding: 4rem 0;
+  margin: 3rem 0;
+}
+
+/* -----
+! 05. theme classes
+ ----- */
+.theme-clr {
+  color: var(--main-color);
+}
+.theme-bg {
+  background-color: var(--main-color);
+}
+.theme-btn {
+  background-color: var(--main-color);
+  color: var(--WHITE);
+  text-transform: capitalize;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  transition: all 0.3s ease;
+  border-radius: 0.4rem;
+}
+.theme-btn:hover {
+  color: var(--WHITE);
+  background-color: var(--button-hover-color);
+}
+.box {
+  background-color: var(--white);
+  border-radius: 0.4rem;
+  box-shadow: var(--shadow);
+  padding: 1rem 0.8rem;
+}
+@media (min-width: 768px) {
+  .box {
+    padding: 1.5rem ;
+  }
+}
+
+
+@media (min-width: 1400px) {
+  .box {
+    padding: 2rem;
+  }
+}
+/* -----
+! 06. custom bootstrap styles 
+ ----- */
+.container {
+  --bs-gutter-x: 10px;
+  max-width: 1140px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    --bs-gutter-x: 15px;
+  }
+}
+form a {
+  color: var(--main-color);
+}
+
+form a:hover {
+  color: var(--main-color);
+}
+
+.form-control::placeholder {
+  color: var(--balck-70);
+}
+
+.form-control {
+  height: 3rem;
+  border-color: var(--border-color-1);
+  color: var(--balck-90);
+  background-color: transparent;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  background-color: transparent;
+  border-color: var(--border-color-1);
+  color: var(--balck-90);
+}
+
+.nav-tabs .nav-link {
+  background-color: var(--white);
+  color: var(--black-70);
+  border-color: var(--border-color-2);
+}
+.nav-tabs .nav-link.active {
+  background-color: var(--main-color);
+  color: var(--WHITE);
+  border-color: transparent;
+}
+
+/* -----
+! 07. custom  styles 
+ ----- */
+.stars-component i {
+  color: var(--orange);
+}
+
+.item-icon {
+  height: 3rem;
+  width: 3rem;
+  display: grid;
+  place-items: center;
+  color: var(--WHITE);
+}
+textarea.form-control {
+  resize: none;
+  height: 6rem;
+}

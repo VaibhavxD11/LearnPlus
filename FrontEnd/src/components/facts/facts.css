@@ -1,0 +1,12 @@
+.fact-item-0 h2 {
+  color: var(--green-light);
+}
+.fact-item-1 h2 {
+  color: var(--red-light);
+}
+.fact-item-2 h2 {
+  color: var(--orange-light);
+}
+.fact-item-3 h2 {
+  color: var(--black-70);
+}

@@ -1,0 +1,6 @@
+.breadcrumb a {
+  color: var(--main-color);
+}
+.breadcrumb a:hover {
+  color: var(--main-color);
+}

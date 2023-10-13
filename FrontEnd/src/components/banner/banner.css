@@ -1,0 +1,122 @@
+.banner {
+  min-height: 65vh;
+  margin: 2rem 0 3rem;
+}
+
+.banner .circular-img {
+  position: relative;
+  width: 16rem;
+  height: 16rem;
+  margin: auto;
+}
+@media (min-width: 992px) {
+  .banner .circular-img {
+    width: 18rem;
+    height: 18rem;
+  }
+}
+@media (min-width: 1200px) {
+  .banner .circular-img {
+    width: 20rem;
+    height: 20rem;
+  }
+}
+.banner .circular-img::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: var(--main-color);
+  opacity: 0.3;
+}
+.banner .circular-img img {
+  position: absolute;
+  left: 0;
+  bottom: -0.5%;
+  border-radius: 0 0 50% 50%;
+  height: 112%;
+}
+
+.bubble-animation span {
+  position: absolute;
+  height: 1.8rem;
+  width: 1.8rem;
+  border: 0.2rem solid green;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.bubble-animation span:nth-child(1) {
+  top: 80%;
+  left: 20%;
+  animation: bubble 30s linear infinite;
+  border-color: var(--yellow-light);
+}
+.bubble-animation span:nth-child(2) {
+  top: 65%;
+  left: 20%;
+  animation: bubble 40s linear infinite;
+  border-color: var(--green-light);
+}
+.bubble-animation span:nth-child(3) {
+  top: 60%;
+  left: 30%;
+  animation: bubble 50s linear infinite;
+  border-color: var(--red-light);
+}
+.bubble-animation span:nth-child(4) {
+  top: 95%;
+  left: 40%;
+  animation: bubble 60s linear infinite;
+  border-color: var(--yellow-light);
+}
+.bubble-animation span:nth-child(5) {
+  top: 105%;
+  left: 50%;
+  animation: bubble 70s linear infinite;
+  border-color: var(--orange);
+}
+.bubble-animation span:nth-child(6) {
+  top: 105%;
+  left: 60%;
+  animation: bubble 80s linear infinite;
+  border-color: var(--green-light);
+}
+.bubble-animation span:nth-child(7) {
+  top: 20%;
+  left: 60%;
+  animation: bubble 60s linear infinite;
+  border-color: var(--red-light);
+}
+.bubble-animation span:nth-child(8) {
+  top: 65%;
+  left: 80%;
+  animation: bubble 50s linear infinite;
+  border-color: var(--red-light);
+}
+.bubble-animation span:nth-child(9) {
+  top: 40%;
+  left: 90%;
+  animation: bubble 40s linear infinite;
+  border-color: var(--green-light);
+}
+
+@keyframes bubble {
+  0% {
+    transform: translateY(0vh);
+    opacity: 0;
+  }
+
+  5%,
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
