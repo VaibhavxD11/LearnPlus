@@ -1,8 +1,79 @@
 import React from "react";
+import axios from 'axios';
+import { useState, useEffect } from "react";
 
 import Breadcrumb from "../components/breadcrumb/Breadcrumb";
 
 const Contact = () => {
+
+  const [data, setData] = useState({
+    name:"",
+    email: "",
+    number: "",
+    message: ""
+
+  });
+  const handleChange = ({ currentTarget: input }) => {
+    setData({ ...data, [input.name]: input.value });
+
+  };
+  const [err, setErr] = useState("");
+
+  function validate() {
+    if (!data.name || !data.email || !data.number || !data.message) {
+      setErr("Enter All Fields");
+      return false;
+    }
+    const domainToCheck = "@jklu.edu.in";
+    if (!data.email.endsWith(domainToCheck)) {
+      setErr("Enter JKLU Email ID");
+      return false;
+    }
+    if ((data.number.length != 10)) {
+      setErr("Enter 10 digit number");
+      return false;
+
+    }
+    if (data.number < 0) {
+      setErr("Enter Positive Number");
+      return false;
+    }
+    setErr("");
+    return true;
+  }
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (validate()) {
+      try {
+        const url = "http://localhost:8080/contact";
+        const { data: res } = await axios.post(url, data);
+
+        setData({
+          name: "",
+          email: "",
+          number: "",
+          message: ""
+        });
+
+        console.log(res.data);         
+
+      }
+      catch (error) {
+        if (error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+
+          console.log(error.response.data.message);
+        }
+      }
+    }
+
+  }
+
+
   return (
     <>
       <Breadcrumb current='Contact' />
@@ -44,17 +115,24 @@ const Contact = () => {
             <div className="col-md-6">
               <div className="contact-form box">
                 <h2 className="text-center fs-4 fw-bold mb-5">Leave a Message</h2>
-                <form>
+                <form id="myForm" onSubmit={handleSubmit}>
+                  <center><h5>{err}</h5></center>
                   <div className="form-group mb-3">
                     <input
                       type="text"
                       placeholder="Name"
+                      name="name"
+                      value={data.name}
+                      onChange={handleChange}
                       className="form-control"
                     />
                   </div>
                   <div className="form-group mb-3">
                     <input
                       type="email"
+                      name="email"
+                      value={data.email}
+                      onChange={handleChange}
                       placeholder="Email"
                       className="form-control"
                     />
@@ -62,6 +140,9 @@ const Contact = () => {
                   <div className="form-group mb-3">
                     <input
                       type="number"
+                      name="number"
+                      value={data.number}
+                      onChange={handleChange}
                       placeholder="Phone"
                       className="form-control"
                     />
@@ -69,10 +150,14 @@ const Contact = () => {
                   <div className="form-group mb-3">
                     <textarea
                       placeholder="Message"
+                      name="message"
+                      value={data.message}
+                      onChange={handleChange}
+                      required
                       className="form-control"
                     ></textarea>
                   </div>
-                  <button type="submit" className="theme-btn w-100">
+                  <button type="submit" className="theme-btn w-100" onClick={handleSubmit}>
                     Send Message
                   </button>
                 </form>

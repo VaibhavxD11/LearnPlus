@@ -1,14 +1,43 @@
-import React from "react";
+// import React from "react";
+import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import {useNavigate } from "react-router-dom";
+
+
 
 import { Breadcrumb, Title, CourseCard, Pagination } from "../components";
 
 import { courses } from "../assets/data/data";
 
+const token = global.loginToken;
+
+
 const Courses = () => {
+
+  const navigate = useNavigate();
+
+  const coursePage = async () => {
+    try {
+      console.log(1);
+      const url = "http://localhost:8080/Courses";
+      const { res } = await axios.get(url);
+      navigate("/Courses");
+           
+
+    } catch (error) {
+      navigate("/login");
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    coursePage();
+  }, []);
+  
   return (
     <div className="container">
       <Breadcrumb current="Courses" />
-      <Title title="our courses" subtitle="find the right course for you" />
+      <Title title="our courses" subtitle="Find the Best Courses"/>
       <section className="courses my-0 ">
         <div className="row justify-content-center">
           <div className="col-12">
@@ -109,5 +138,6 @@ const Courses = () => {
     </div>
   );
 };
+
 
 export default Courses;

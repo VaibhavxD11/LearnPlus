@@ -38,7 +38,7 @@ const Banner = () => {
               nisi delectus a minus.
             </p>
             
-            <Link to="/login">
+            <Link to="/signup">
               <button type="button" className="theme-btn">
                 join free
               </button>
