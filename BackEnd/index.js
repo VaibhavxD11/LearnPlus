@@ -9,6 +9,8 @@ const cookieParser = require("cookie-parser");
 // const userRoutes = require('./routes/users');
 // const authRoutes = require('./routes/auth');
 //const bcrypt = require("bcrypt");
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json())
 app.use(cors());

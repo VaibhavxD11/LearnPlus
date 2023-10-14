@@ -111,13 +111,11 @@ const Footer = () => {
               <div className="links-info  col-sm-6 mt-4 mt-sm-0">
                 <h3>learn plus</h3>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Molestiae natus labore laudantium esse accusantium corporis
-                  delectus rem nam corrupti ipsa velit culpa sint veniam
-                  dignissimos incidunt itaque maiores, sed laborum odio iure.
-                  Illum veniam eius dolorem nisi delectus atque, aliquam facilis
-                  debitis earum illo modi temporibus officiis eveniet ullam
-                  omnis quia{" "}
+                  The project aims to address the critical need for a centralized
+                  university information system in India. It's chosen to enhance
+                  transparency, facilitate informed decision-making,and promote
+                  self-improvement among students and faculty by providing
+                  comprehensive course and university data.{" "}
                 </p>
               </div>
             </div>

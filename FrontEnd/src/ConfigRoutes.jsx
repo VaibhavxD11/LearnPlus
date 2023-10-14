@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Contact, Courses, Home, LogIn, SignUp, SingleCourse } from "./pages";
+import { Contact, Courses, Home, LogIn, SignUp, SingleCourse, ForgotPassword } from "./pages";
 
 const ConfigRoutes = () => {
   return (
@@ -11,6 +11,7 @@ const ConfigRoutes = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/singlecourse" element={<SingleCourse />} />
       <Route path="/courses/" element={<Courses />} />
+      <Route path="/forgotpassword" element={<ForgotPassword />} />
     </Routes>
   );
 };

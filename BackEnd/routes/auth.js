@@ -4,6 +4,14 @@ const { User } = require("../models/user");
 const { Contact } = require("../models/contactus");
 const jwt = require("jsonwebtoken");
 const authenticate = require("../middleware/authenticate");
+const express = require("express");
+const app = express();
+const path = require('path');
+app.set("view engine", "ejs");
+var nodemailer = require("nodemailer");
+// app.set('views', path.join(__dirname, 'views'));
+
+
 
 router.get("/", (req, res) => {
     res.send("Homepage Success");
@@ -91,6 +99,105 @@ router.post("/contact", async(req, res) => {
     } catch (error) {
         console.log("Error");
     }
+})
+
+
+router.post("/forgotpassword", async(req, res) => {
+    const { email } = req.body;
+    try {
+        let userExist = await User.findOne({ email });
+        if (!userExist) {
+            return res.status(404).send({ message: "User Not Found" });
+        }
+        const secret = process.env.SECRET_KEY + userExist.password;
+        const token = jwt.sign({ email: userExist.email, id: userExist._id }, secret, {
+            expiresIn: "10m",
+        });
+        const link = `http://localhost:8080/reset-password/${userExist.email}/${token}`;
+
+        var transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: "vaibhavdwivedi.2211@gmail.com",
+                pass: "fxmwhkvalalylscb",
+                // fxmw hkva laly lscb
+            },
+        });
+
+        var mailOptions = {
+            from: "youremail@gmail.com",
+            to: userExist.email,
+            subject: "Password Reset Link",
+            text: link
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email sent: " + info.response);
+            }
+        });
+
+        console.log(link);
+
+
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+router.get("/reset-password/:email/:token", async (req, res) => {
+    const { email, token } = req.params;
+    console.log(req.params);
+    let userExist = await User.findOne({ email});
+    if (!userExist) {
+        return res.status(404).send({ message: "User Not Found" });
+    }
+    const secret = process.env.SECRET_KEY + userExist.password;
+    try {
+        const verify = jwt.verify(token, secret);
+        console.log(1);
+        res.render("forgot", { email: verify.email ,status: "not verified" });
+        //res.status(200).send({ message: "Verified" });
+        
+    } catch (error) {
+        console.log(error);
+        res.status(401).send({ message: "Not verified" });
+    }
+        
+})
+
+
+router.post("/reset-password/:email/:token", async (req, res) => {
+    const { email, token } = req.params;
+    const { password } = req.body;
+    
+    let userExist = await User.findOne({ email });
+    if (!userExist) {
+        return res.status(404).send({ message: "User Not Found" });
+    }
+    const secret = process.env.SECRET_KEY + userExist.password;
+    try {
+        const verify = jwt.verify(token, secret); 
+        const salt = await bcrypt.genSalt(Number(process.env.SALT));
+        const hashPassword = await bcrypt.hash(password, salt);
+        await User.updateOne(
+            { _id: userExist._id },
+            {
+                $set: {
+                    password: hashPassword,
+                },
+            }
+        );
+        res.render("forgot", { email: verify.email, status: "verified" });
+        //res.status(200).send({ message: "Verified and Updated" });
+
+    } catch (error) {
+        console.log(error);
+        res.status(401).send({ message: "Not verified" });
+    }
+
 })
 
 module.exports = router;

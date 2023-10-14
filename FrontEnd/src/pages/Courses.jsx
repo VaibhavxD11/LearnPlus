@@ -30,9 +30,9 @@ const Courses = () => {
     }
   }
 
-  useEffect(() => {
-    coursePage();
-  }, []);
+  // useEffect(() => {
+  //   coursePage();
+  // }, []);
   
   return (
     <div className="container">

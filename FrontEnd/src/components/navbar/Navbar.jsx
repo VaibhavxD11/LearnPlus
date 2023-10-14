@@ -52,6 +52,7 @@ const Navbar = () => {
                   onClick={closeSidebar}
                   className="nav-link  px-3 px-lg-0"
                   to="/"
+                  activeClassName="nav-link"
                 >
                   Home
                 </Link>
@@ -61,6 +62,7 @@ const Navbar = () => {
                   onClick={closeSidebar}
                   className="nav-link px-3 px-lg-0"
                   to="/courses"
+                  activeClassName="nav-link"
                 >
                   Courses
                 </Link>
@@ -104,6 +106,7 @@ const Navbar = () => {
                   onClick={closeSidebar}
                   className="nav-link px-3 px-lg-0"
                   to="/contact"
+                  activeClassName="nav-link"
                 >
                   Contact
                 </Link>

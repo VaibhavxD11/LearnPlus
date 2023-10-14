@@ -76,7 +76,7 @@ const LogIn = () => {
                     />
                   </div>
                   <div className="d-flex justify-content-end my-3">
-                    <Link to={""}>Forgot Password?</Link>
+                    <Link to={"/forgotpassword"}>Forgot Password?</Link>
                   </div>
                   <div className="form-group mb-3 ">
                     <input
