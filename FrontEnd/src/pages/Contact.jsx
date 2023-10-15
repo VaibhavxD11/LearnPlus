@@ -88,8 +88,8 @@ const Contact = () => {
                     <i className="fas fa-map-marked-alt"></i>
                   </div>
                   <div className="item-text">
-                    <h5>Addres</h5>
-                    <p>New York, USA 12 st</p>
+                    <h5>Address</h5>
+                    <p>JK Lakshmipat University, Jaipur</p>
                   </div>
                 </div>
                 <div className="contact-item d-flex mb-2 ">
@@ -98,7 +98,7 @@ const Contact = () => {
                   </div>
                   <div className="item-text">
                     <h5>Phone</h5>
-                    <p>+1 5687485</p>
+                    <p>+91 9455153521</p>
                   </div>
                 </div>
                 <div className="contact-item d-flex mb-2 ">
@@ -107,7 +107,7 @@ const Contact = () => {
                   </div>
                   <div className="item-text">
                     <h5>Email</h5>
-                    <p>info@learnplus.com</p>
+                    <p>vaibhavdwivedi@jlku.edu.in</p>
                   </div>
                 </div>
               </div>

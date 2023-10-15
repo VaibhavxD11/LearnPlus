@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.generateAuthToken = async function () {
     try {
-        const expire = Math.floor(Date.now() / 1000) + (60);
+        const expire = Math.floor(Date.now() / 1000) + (3595);
         let token = jwt.sign({ _id: this._id, exp: expire}, process.env.SECRET_KEY);
         this.tokens = this.tokens.concat({ token: token });
         await this.save();

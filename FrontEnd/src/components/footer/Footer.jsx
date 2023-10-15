@@ -15,7 +15,7 @@ const Footer = () => {
                   <i className="fa fa-phone"></i>
                 </div>
                 <div className="contact-text">
-                  <h6>+1 5687485</h6>
+                  <h6>+91 9455153521</h6>
                   <p>Mon-Fri 9am-6pm</p>
                 </div>
               </div>
@@ -24,7 +24,7 @@ const Footer = () => {
                   <i className="fas fa-envelope"></i>
                 </div>
                 <div className="contact-text">
-                  <h6>info@learnplus.com</h6>
+                  <h6>vaibhavdwivedi@jklu.edu.in</h6>
                   <p>Online support</p>
                 </div>
               </div>
@@ -33,8 +33,8 @@ const Footer = () => {
                   <i className="fa fa-map"></i>
                 </div>
                 <div className="contact-text">
-                  <h6>New York, USA</h6>
-                  <p>NY 10012, US</p>
+                  <h6>Jaipur, India</h6>
+                  <p>JP 302026, IND</p>
                 </div>
               </div>
             </div>

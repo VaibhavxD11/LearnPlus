@@ -180,10 +180,18 @@ router.get("/reset-password/:email/:token", async (req, res) => {
         
 })
 
+// router.get("/reset-password", async (req, res) => {
+//     res.render("forgot", { email: "we@gmail.com", status: "not verified" });
+
+// })
+
 
 router.post("/reset-password/:email/:token", async (req, res) => {
     const { email, token } = req.params;
-    const { password } = req.body;
+    const { password, password2 } = req.body;
+    if (password != password2) {
+        return res.status(401).send({ message: "Error" });
+    }
     
     let userExist = await User.findOne({ email });
     if (!userExist) {

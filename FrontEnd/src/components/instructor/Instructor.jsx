@@ -22,8 +22,8 @@ const Instructor = () => {
                 </div>
                 <div className="col-md-6 text-center">
                   <Title
-                    title="become a instructor"
-                    subtitle="join us to publish own course"
+                    title="become a contributor"
+                    subtitle="join us to publish own info"
                   />
                   <Link to="/contact" className="theme-btn">
                     Apply Now
