@@ -2,12 +2,43 @@
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Breadcrumb } from "../components";
 
 
 
 const LogIn = () => {
+  function delay(milliseconds) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, milliseconds);
+    });
+  }
+
+  const showLoading = () => {
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve()
+        },2000);
+      }),
+      {
+        pending: "Logging In",
+        // success: "🦄 Success",
+        // error:"Error"
+      },
+      {
+        position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+      }
+    )
+  }
 
   const navigate = useNavigate();
 
@@ -20,20 +51,37 @@ const LogIn = () => {
     setData({ ...data, [input.name]: input.value });
     
   };
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    showLoading();
+   
 
     try {
       const url = "http://localhost:8080/login";
-      const { data: res } = await axios.post(url, data); 
+      const { data: res } = await axios.post(url, data);
+      const { getcookie } = await axios.get(url, {
+        withCredentials: true,
+      } ); 
       
       console.log(res.data);
 
       console.log(data.email);
       console.log(res.message);
+      //delay(1900);
       navigate("/Courses");
+
+      // toast.success('🦄 Success', {
+      //   position: "top-center",
+      //   autoClose: 1600,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: false,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "light",
+      // });
 
     }
     catch (error) {
@@ -54,6 +102,9 @@ const LogIn = () => {
 
   return (
     <>
+      <div>
+        <ToastContainer />
+      </div>
       <Breadcrumb current="LogIn" />
       <section className="login">
         <div className="container ">

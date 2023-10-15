@@ -24,6 +24,14 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// app.post("/Courses", async (req, res) => {
+//     console.log(global.accessToken);
+//     res.cookie("jwt", global.accessToken, {
+//         expires: new Date(Date.now() + 60000),
+//     }); 
+//     res.send({ message: "Logged In" });
+// })
+
 app.use(require("./routes/auth"));
 
 

@@ -1,11 +1,19 @@
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Breadcrumb } from "../components";
 
 
 const ForgotPassword = () => {
+
+    function delay(milliseconds) {
+        return new Promise((resolve) => {
+            setTimeout(resolve, milliseconds);
+        });
+    }
+    
 
     const navigate = useNavigate();
     const [data, setData] = useState({
@@ -19,6 +27,16 @@ const ForgotPassword = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        toast.success('🦄 Email Sent', {
+            position: "top-center",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
 
         try {
             const url = "http://localhost:8080/forgotpassword";
@@ -26,8 +44,10 @@ const ForgotPassword = () => {
             //console.log("Yes");
             setData("");
             console.log(res.data);
+            await delay(3100);
             navigate("/login");
-
+            
+            
         }
         catch (error) {
             if (error.response &&
@@ -43,6 +63,9 @@ const ForgotPassword = () => {
 
     return (
         <>
+            <div>
+                <ToastContainer />
+            </div>
             <Breadcrumb current="Forgot Password" />
             <section className="login">
                 <div className="container ">

@@ -9,6 +9,9 @@ const app = express();
 const path = require('path');
 app.set("view engine", "ejs");
 var nodemailer = require("nodemailer");
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
 // app.set('views', path.join(__dirname, 'views'));
 
 
@@ -69,11 +72,11 @@ router.post("/login",async(req, res) => {
         console.log(token);
         
 
-        res.cookie("jwtoken", token, {
-            expires: new Date(Date.now() + 25),
-            httpOnly: true
+        res.cookie("jwtokenss", token, {
+            expires: new Date(Date.now()+6000),
             
         });
+        //res.cookie("jwt", token);
         global.accessToken = token;
                 
 
@@ -84,10 +87,18 @@ router.post("/login",async(req, res) => {
     }
 });
 
-router.get("/Courses",authenticate,(req, res) => {
-    console.log("Middleware");
+router.get("/login", async(req, res) => {  
+    res.cookie("jwtokens", global.accessToken, {
+        expires: new Date(Date.now() + 60000*60),
 
-    res.status(200).send({ message: "This the Courses Page" });
+    });
+
+    res.status(200).send({message:"OK"});
+});
+
+router.get("/Courses", authenticate, (req, res) => {
+    console.log("Middleware");
+    res.status(200).send({ message: "This is the Courses Page" });
 });
 
 router.post("/contact", async(req, res) => {
@@ -140,6 +151,7 @@ router.post("/forgotpassword", async(req, res) => {
         });
 
         console.log(link);
+        res.status(200).send({ message: "Success" });
 
 
     } catch (error) {
