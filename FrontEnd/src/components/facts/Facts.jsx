@@ -3,10 +3,10 @@ import React from "react";
 import "./facts.css";
 
 const facts = [
-  { title: "800k", subTitle: "students we've" },
-  { title: "500+", subTitle: "courses" },
-  { title: "50+", subTitle: "countries" },
-  { title: "100+", subTitle: "skilled instructors" },
+  { title: "1000+", subTitle: "Universities" },
+  { title: "50+", subTitle: "courses" },
+  { title: "India", subTitle: "Pan Country" },
+  { title: "Accurate", subTitle: "Information" },
 ];
 
 const Facts = () => {

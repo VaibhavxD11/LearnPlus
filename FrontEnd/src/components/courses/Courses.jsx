@@ -9,7 +9,7 @@ const Courses = () => {
   return (
     <section className="courses">
       <div className="container">
-        <Title title="courses" subtitle="Find the right course for you" />
+        <Title title="Top Institutes" subtitle="Find the right place for you" />
         <div className="row gx-4 gy-5">
           {courses
             .filter((item) => item.category === "web")
@@ -20,7 +20,7 @@ const Courses = () => {
         <div className="row">
           <div className="col-12 text-center mt-5">
             <Link to="/courses" className="theme-btn">
-              view all courses
+              view all
             </Link>
           </div>
         </div>

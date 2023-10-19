@@ -26,7 +26,7 @@ const {
 const SingleCourse = () => {
   return (
     <>
-      <Breadcrumb courses current="Javascript For Beginners" />
+      <Breadcrumb courses current="College" />
       <section className="single-course mb-5">
         <div className="container">
           <div className="row gy-4">
@@ -50,7 +50,7 @@ const SingleCourse = () => {
                     <DetailDescription {...description} />
                     {/* course-description end */}
                     {/* course-instructor start */}
-                    <DetailInstructor {...creator} />
+                    {/* <DetailInstructor {...creator} /> */}
                     {/* course-instructor end */}
                     {/* course-reviews start */}
                     <DetailReviews coments={coments} rating={rating} />

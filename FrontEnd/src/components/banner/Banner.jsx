@@ -31,11 +31,11 @@ const Banner = () => {
               An investment in Knowledge pays the best interest
             </h2>
             <h1 className="mb-3 text-capitalize fs-3 fw-bold">
-              best online platform for learning.
+              best online platform for information.
             </h1>
             <p className="mb-4 text-muted">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod
-              nisi delectus a minus.
+              More than 1000 universities offering a multitude of undergraduate, post
+              graduate, and doctorate courses
             </p>
             
             <Link to="/signup">

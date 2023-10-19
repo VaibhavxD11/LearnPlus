@@ -34,11 +34,11 @@ const DetailCurriculum = ({ chapters }) => {
                       <span>{chapter.title}</span>
                     </div>
                     <div className="chapter-info me-2">
-                      <span className="mb-1 mb-md-0 fs-6 ">
+                      {/* <span className="mb-1 mb-md-0 fs-6 ">
                         {chapter.total_parts} lessons
-                      </span>
-                      <span className="theme-clr mx-1">\</span>
-                      <span>{chapter.total_time}</span>
+                      </span> */}
+                      {/* <span className="theme-clr mx-1">\</span>
+                      <span>{chapter.total_time}</span> */}
                     </div>
                   </div>
                 </button>
@@ -62,7 +62,7 @@ const DetailCurriculum = ({ chapters }) => {
                             <i className="fas fa-play me-2 theme-clr"></i>
                             {part.sub_title}
                           </button>
-                          <span>{part.time}</span>
+                          {/* <span>{part.time}</span> */}
                         </div>
                       </li>
                     ))}

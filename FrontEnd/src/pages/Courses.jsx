@@ -1,6 +1,6 @@
 // import React from "react";
 import axios from 'axios';
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import {useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,7 +10,7 @@ import { Breadcrumb, Title, CourseCard, Pagination } from "../components";
 
 import { courses } from "../assets/data/data";
 
-const token = global.loginToken;
+//const token = global.loginToken;
 
 function showToast() {
   toast.success('🦄 Success', {
@@ -36,6 +36,8 @@ const Courses = () => {
       const { res } = await axios.get(url, {
         withCredentials:true,
       });
+      showToast();
+      //console.log(res.message);
       //navigate("/Courses");
            
 
@@ -45,10 +47,9 @@ const Courses = () => {
     }
   }
 
-  useEffect(() => {
-    coursePage();
-    showToast();
-  }, []);
+  // useEffect(() => {
+  //   coursePage();
+  // },);
 
   // useEffect(() => {
   //   showToast();
@@ -61,7 +62,7 @@ const Courses = () => {
         <ToastContainer/>
       </div>
       <Breadcrumb current="Courses" />
-      <Title title="our courses" subtitle="Find the Best Courses"/>
+      <Title title="our courses" subtitle="Find the Best for yourself"/>
       <section className="courses my-0 ">
         <div className="row justify-content-center">
           <div className="col-12">
@@ -81,7 +82,7 @@ const Courses = () => {
                   aria-controls="web-development"
                   aria-selected="true"
                 >
-                  web development
+                  Technology
                 </button>
                 <button
                   className="nav-link rounded-3 me-2 px-4 mb-2 mb-md-0"
@@ -93,7 +94,7 @@ const Courses = () => {
                   aria-controls="health"
                   aria-selected="false"
                 >
-                  health
+                  Management
                 </button>
                 <button
                   className="nav-link rounded-3 me-2 px-4 mb-2 mb-md-0"
@@ -105,7 +106,7 @@ const Courses = () => {
                   aria-controls="music"
                   aria-selected="false"
                 >
-                  music
+                  Design
                 </button>
               </div>
             </nav>

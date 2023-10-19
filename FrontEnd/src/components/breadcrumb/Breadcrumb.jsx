@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./breadcrumb.css";
 
-const Breadcrumb = ({ current, courses }) => {
+const Breadcrumb = ({ current, courses,login }) => {
   return (
     <div className="breadcrumb">
       <div className="container">
@@ -15,6 +15,11 @@ const Breadcrumb = ({ current, courses }) => {
             {courses && (
               <li className="breadcrumb-item">
                 <Link to="/courses">Courses</Link>
+              </li>
+            )}
+            {login && (
+              <li className="breadcrumb-item">
+                <Link to="/login">Login</Link>
               </li>
             )}
             <li className="breadcrumb-item active" aria-current="page">

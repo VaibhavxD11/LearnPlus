@@ -66,7 +66,7 @@ const ForgotPassword = () => {
             <div>
                 <ToastContainer />
             </div>
-            <Breadcrumb current="Forgot Password" />
+            <Breadcrumb login current="Forgot Password" />
             <section className="login">
                 <div className="container ">
                     <div className="row justify-content-center">

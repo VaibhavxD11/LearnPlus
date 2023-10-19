@@ -23,3 +23,8 @@
 .footer-stars span{
     color: var(--orange);
 }
+
+.course-header img{
+  height: 10rem;
+  width: 15rem;
+}

@@ -1,13 +1,13 @@
-export { default as web1 } from "../img/courses/web/1.jpg";
-export { default as web2 } from "../img/courses/web/2.jpg";
-export { default as web3 } from "../img/courses/web/3.jpg";
-export { default as web4 } from "../img/courses/web/4.jpg";
+export { default as tech1 } from "../img/courses/tech/iitb.jpg";
+export { default as tech2 } from "../img/courses/tech/iitd.jpg";
+export { default as tech3 } from "../img/courses/tech/iitr.jpg";
+export { default as tech4 } from "../img/courses/tech/iitkgp.jpg";
 
-export { default as health1 } from "../img/courses/health/1.jpg";
-export { default as health2 } from "../img/courses/health/2.jpg";
+export { default as mgmt1 } from "../img/courses/mgmt/iima.jpg";
+export { default as mgmt2 } from "../img/courses/mgmt/iimb.jpg";
 
-export { default as music1 } from "../img/courses/music/1.jpg";
-export { default as music2 } from "../img/courses/music/2.jpg";
+export { default as design1 } from "../img/courses/design/nid.jpg";
+export { default as design2 } from "../img/courses/design/nift.jpg";
 
 export { default as person1 } from "../img/users/person-1.png";
 export { default as person2 } from "../img/users/person-2.png";

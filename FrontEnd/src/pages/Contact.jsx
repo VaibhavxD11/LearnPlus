@@ -107,7 +107,7 @@ const Contact = () => {
                   </div>
                   <div className="item-text">
                     <h5>Email</h5>
-                    <p>vaibhavdwivedi@jlku.edu.in</p>
+                    <p>vaibhavdwivedi@jklu.edu.in</p>
                   </div>
                 </div>
               </div>

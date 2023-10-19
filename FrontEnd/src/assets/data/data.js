@@ -1,12 +1,12 @@
 import {
-  web1,
-  web2,
-  web3,
-  web4,
-  health1,
-  health2,
-  music1,
-  music2,
+  tech1,
+  tech2,
+  tech3,
+  tech4,
+  mgmt1,
+  mgmt2,
+  design1,
+  design2,
   person1,
   person2,
   person3,
@@ -15,19 +15,19 @@ import {
 
 export const course = {
   info: {
-    title: "Javascript For Beginners",
+    title: "IIT Bombay",
     students: "208",
     last_Update: "2021/11/09",
     language: "english",
     stars_average: 4.6,
-    reviews: "158",
+    reviews: "2",
     creator_name: "john doe",
   },
   details: {
     price_old: "100$",
     price_new: "49$",
     price_discount: "51%",
-    course_img: web1,
+    course_img: tech1,
     features: [
       {
         icon: "fa fa-tv",
@@ -63,94 +63,98 @@ export const course = {
   chapters: [
     {
       id: 1,
-      title: "Introduction",
+      title: "B.E/B.Tech",
       total_parts: "14",
       total_time: "1hr 3min",
       parts: [
-        { sub_title: "Introduction", time: "08:12" },
-        { sub_title: "What is JavaScript?", time: "03:24" },
-        { sub_title: "JavaScript in Action!", time: "12:21" },
-        { sub_title: "How JavaScript Is Executed", time: "09:33" },
-        { sub_title: "Dynamic vs Weakly Typed Languages", time: "10:15" },
         {
-          sub_title: "JavaScript Executes In A Hosted Environment",
-          time: "15:12",
-        },
+          sub_title: "B.Tech. in Computer Science and Engineering", time: "08:12" },
+        {
+          sub_title: "B.Tech. in Aerospace Engineering", time: "03:24" },
+        {
+          sub_title: "B.Tech. in Electrical Engineering", time: "12:21" },
+        {
+          sub_title: "B.Tech. in Mechanical Engineering", time: "09:33" },
+        {
+          sub_title: "B.Tech. in Chemical Engineering", time: "10:15" },
       ],
     },
     {
       id: 2,
-      title: "Basics: Variables, Data Types,...",
+      title: "M.Sc",
       total_parts: "39",
       total_time: "3hr 16min",
       parts: [
-        { sub_title: "Introduction", time: "08:12" },
-        { sub_title: "What is JavaScript?", time: "03:24" },
-        { sub_title: "JavaScript in Action!", time: "12:21" },
-        { sub_title: "How JavaScript Is Executed", time: "09:33" },
-        { sub_title: "Dynamic vs Weakly Typed Languages", time: "10:15" },
+        {sub_title: "M.Sc. in Biotechnology", time: "08:12" },
+        {sub_title: "M.Sc. in Mathematics", time: "03:24" },
+        {sub_title: "M.Sc. in Applied Statistics and Informatics", time: "12:21" },
         {
-          sub_title: "JavaScript Executes In A Hosted Environment",
+          sub_title: "M.Sc. in Physics", time: "09:33" },
+        {
+          sub_title: "M.Sc. in Chemistry", time: "10:15" },
+        {
+          sub_title: "M.Sc. in Applied Geology",
           time: "15:12",
         },
       ],
     },
     {
       id: 3,
-      title: "Efficient Development ",
+      title: "M.Tech",
       total_parts: "19",
       total_time: "1hr 15min",
       parts: [
-        { sub_title: "Introduction", time: "08:12" },
-        { sub_title: "What is JavaScript?", time: "03:24" },
-        { sub_title: "JavaScript in Action!", time: "12:21" },
-        { sub_title: "How JavaScript Is Executed", time: "09:33" },
-        { sub_title: "Dynamic vs Weakly Typed Languages", time: "10:15" },
         {
-          sub_title: "JavaScript Executes In A Hosted Environment",
+          sub_title: "M.Tech. in Computer Science and Engineering", time: "08:12" },
+        {
+          sub_title: "M.Tech. in Biomedical Engineering", time: "03:24" },
+        {
+          sub_title: "M.Tech. in Environmental Science and Engineering", time: "12:21" },
+        {
+          sub_title: "M.Tech. in Electronic Systems", time: "09:33" },
+        {
+          sub_title: "M.Tech. in Chemical Engineering", time: "10:15" },
+        {
+          sub_title: "M.Tech. in Materials Science",
           time: "15:12",
         },
       ],
     },
     {
       id: 4,
-      title: "Working with Control Structures",
+      title: "PhD",
       total_parts: "38",
       total_time: "3hr 52min",
       parts: [
-        { sub_title: "Introduction", time: "08:12" },
-        { sub_title: "What is JavaScript?", time: "03:24" },
-        { sub_title: "JavaScript in Action!", time: "12:21" },
-        { sub_title: "How JavaScript Is Executed", time: "09:33" },
-        { sub_title: "Dynamic vs Weakly Typed Languages", time: "10:15" },
         {
-          sub_title: "JavaScript Executes In A Hosted Environment",
-          time: "15:12",
-        },
+          sub_title: "M.Sc. + Ph.D. in Operations Research", time: "08:12" },
+        {
+          sub_title: "M.A. + Ph.D. in Philosophy", time: "03:24" },
+        {
+          sub_title: "M.Sc. + Ph.D. in Energy Science and Engineering", time: "12:21" },
+        {
+          sub_title: "Ph.D. in Design", time: "09:33" },
       ],
     },
     {
       id: 5,
-      title: "Behind the Scenes of JavaScript",
+      title: "BSc",
       total_parts: "12",
       total_time: "1hr 34min",
       parts: [
-        { sub_title: "Introduction", time: "08:12" },
-        { sub_title: "What is JavaScript?", time: "03:24" },
-        { sub_title: "JavaScript in Action!", time: "12:21" },
-        { sub_title: "How JavaScript Is Executed", time: "09:33" },
-        { sub_title: "Dynamic vs Weakly Typed Languages", time: "10:15" },
         {
-          sub_title: "JavaScript Executes In A Hosted Environment",
-          time: "15:12",
-        },
+          sub_title: "B.Sc. in Economics", time: "08:12" },
+        {
+          sub_title: "B.Sc. in Mathematics", time: "03:24" },
+        {
+          sub_title: "B.Sc. in Chemistry", time: "12:21" },
       ],
     },
   ],
 
   description: {
     course_desc:
-      "JavaScript is THE most important programming language you need to learn as a web developer - and with this course, you make sure that you will not miss a single thing you have to know as a JavaScript developer!This is the most comprehensive and modern course you can find on JavaScript - it's based on all my JavaScript knowledge AND teaching experience. It's both a complete guide, starting with the core basics of the language, as well as an extensive reference of the JavaScript language and environment, ensuring that both newcomers as well as experienced JavaScript developers get a lot out of this course.",
+     "Established in 1958, the Indian Institute of Technology Bombay (also known as IIT Bombay or IIT Mumbai) is the first public college to have laid its foundation stone with assistance from UNESCO. In 1961, it was declared as an Institute of National Importance by the Parliament of India. It has also been declared a 'Deemed University' and is autonomous in nature. IIT Bombay ranked 3 and 4 for both the 'Overall' and 'Engineering' categories, respectively, by the NIRF 2023 Rankings. Globally, the Indian Institute of Technology Bombay improved its ranking to 149 in the QS World Rankings 2024 from 172 in the QS World Rankings 2023. IIT Bombay offers degree and dual degree programmes at the UG, PG and doctorate levels. The institute offers 17 departments with more than 60 courses in the stream of Engineering, Technology, Science and Management. ",
     course_info: {
       question: "Who this course is for",
       answer: [
@@ -163,42 +167,25 @@ export const course = {
   },
   coments: [
     {
-      user: "David M.",
+      user: "Anonymous",
       img: person1,
-      time: "1 year ago",
+      time: "3 Oct 2023",
       star: "5",
 
-      title: "Really useful",
+      title: "Really Good Infracture, facilities and placements also.",
       text:
-        "Beyond very pragmatic explanations about basic and advanced JavaScript concepts, the course is full of best practices to design/build apps in JavaScript without frameworks (huge focus on the DOM). This is not so easy to find as most of the courses focus on vanilla JS to build basic examples or frameworks to build more advanced apps. Really useful!",
+        "Placements: Aprox 88 percent students were placed last year ( 2022-23) the highest package is 56 LPA and average package is 18 Lacs per annum. Most of students got internships in non core companies and IT companies like healthify me. And core companies are drreddy.",
     },
     {
-      user: "Matsu C",
+      user: "Anonymous",
       img: person2,
-      time: "2 days ago",
+      time: "26 March 2023",
       star: "4",
       title: "Keep learning",
       text:
-        "Bundling the courses and know how of successful instructors, Academind strives to deliver high quality online educationOnline Education, RealLife Success that's what Academind stands for. Learn topics like web development, data analyses and more in a fun and engaging way.Currently, you can find courses published by Maximilian Schwarzmüller and Manuel Lorenz, more instructors to come!",
+        "Faculty: All professors are well qualified in their field and helpful. Some professors take help sessions before midsem and end sem exams. The course curriculum is relevant to industrial applications. The semester exams are much harder than student think and almost all students pass in this department.",
     },
-    {
-      user: "Christopher A.",
-      img: person3,
-      time: "6 days ago",
-      star: "5",
-      title: "good course",
-      text:
-        "I have taken almost 2 months to complete this course. For the reason I started this course is because I wanna explore deeper in React. Max React Course is extremely amazing as well, and let me got an offer!What I really wanna emphasize it that this JS - Complete Course gives me the Confidence to say Give me network and JS, I can create any software!. Maybe a bit boast, but that is really how I feel whenever I learn from Max.I wanna say thank you Max, even though we never meet in real life, you are really my best mentor in my life time, and I appreciate a lot you spend so many time on create these fabulous courses! Hope that I can create something helpful to people like you do to world, in the future",
-    },
-    {
-      user: "Ncha Takoh E.",
-      img: person4,
-      time: "just a moment ago",
-      star: "4",
-      title: "very useful",
-      text:
-        "it was nice course at least i got some understanding where i was in doubt, the instructor was good, that is why i was able to buy two of it course again react and nodejs",
-    },
+    
   ],
 
   creator: {
@@ -216,8 +203,8 @@ export const course = {
 export const courses = [
   {
     id: 1,
-    title: "Html For Beginners",
-    course_img: web1,
+    title: "IIT Bombay",
+    course_img: tech1,
     creator: "john smilga",
     creator_img: person1,
     star: 4.8,
@@ -226,71 +213,71 @@ export const courses = [
   },
   {
     id: 2,
-    title: "Css For Beginners",
-    course_img: web2,
+    title: "IIT Delhi",
+    course_img: tech2,
     creator: "john smilga",
     creator_img: person2,
-    star: 4,
+    star: 4.6,
     price: "10",
     category: "web",
   },
   {
     id: 3,
-    title: "Javascript",
-    course_img: web3,
+    title: "IIT Roorkee",
+    course_img: tech3,
     creator: "jessica fleming",
     creator_img: person3,
-    star: 3.9,
+    star: 4.6,
     price: "21",
     category: "web",
   },
   {
     id: 4,
-    title: "Php Advance",
-    course_img: web4,
+    title: "IIT Kharagpur",
+    course_img: tech4,
     creator: "wes bos",
     creator_img: person4,
-    star: 3.4,
+    star: 4.5,
     price: "18",
     category: "web",
   },
   {
     id: 5,
-    title: "Weight Loss Course",
-    course_img: health1,
+    title: "IIM Ahemdabad",
+    course_img: mgmt1,
     creator: "dr karen e wells",
     creator_img: person2,
-    star: 4.1,
+    star: 4.6,
     price: "35",
     category: "health",
   },
   {
     id: 6,
-    title: "Nutrition",
-    course_img: health2,
+    title: "IIM Bangalore",
+    course_img: mgmt2,
     creator: "chris worfolk",
     creator_img: person3,
-    star: 4.6,
+    star: 4.3,
     price: "15",
     category: "health",
   },
   {
     id: 7,
-    title: "Become A Singer",
-    course_img: music1,
+    title: "NID",
+    course_img: design1,
     creator: "laura goellner",
     creator_img: person1,
-    star: 3.8,
+    star: 4.7,
     price: "105",
     category: "music",
   },
   {
     id: 8,
-    title: "Guitar Master",
-    course_img: music2,
+    title: "NIFT Delhi",
+    course_img: design2,
     creator: "devatma saraswat",
     creator_img: person3,
-    star: 3.2,
+    star: 4.2,
     price: "99",
     category: "music",
   },

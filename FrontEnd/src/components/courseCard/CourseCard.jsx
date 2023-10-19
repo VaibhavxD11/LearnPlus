@@ -19,16 +19,16 @@ const CourseCard = ({
         <Link to="/singlecourse">
           <div className="course-header">
             <img src={course_img} alt={title} className="rounded" />
-            <span className="theme-bg px-2 py-1 fw-bold rounded">
+            {/* <span className="theme-bg px-2 py-1 fw-bold rounded">
               $ {price}
-            </span>
+            </span> */}
           </div>
           <h3 className="course-title my-3 fs-5">{title}</h3>
           <div className="course-footer">
-            <div className="footer-creator">
+            {/* <div className="footer-creator">
               <img src={creator_img} alt={creator} className="me-2" />
               <span>{creator}</span>
-            </div>
+            </div> */}
             <div className="footer-stars mt-2 d-flex">
               <span className="me-1 fw-bold">({star})</span>
               <Stars stars={star} />

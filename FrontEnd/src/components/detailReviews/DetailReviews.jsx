@@ -24,7 +24,7 @@ const DetailReviews = ({ coments, rating }) => {
                 <Stars stars={rating.stars_average} />
               </div>
               <div className="rating-reviews">
-                <span>{rating.reviews} Reviews</span>
+                {/* <span>{rating.reviews} Reviews</span> */}
               </div>
             </div>
           </div>

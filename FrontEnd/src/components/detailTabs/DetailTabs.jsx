@@ -28,7 +28,7 @@ const DetailTabs = () => {
         >
           description
         </button>
-        <button
+        {/* <button
           className="nav-link rounded-3 m-1 px-4"
           id="course-instructor-tab"
           data-bs-toggle="tab"
@@ -39,7 +39,7 @@ const DetailTabs = () => {
           aria-selected="false"
         >
           instructor
-        </button>
+        </button> */}
         <button
           className="nav-link rounded-3 m-1 px-4"
           id="course-reviews-tab"
