@@ -6,7 +6,6 @@ import {
   DetailAside,
   DetailDescription,
   DetailHeader,
-  DetailInstructor,
   DetailReviews,
   DetailTabs,
 } from "../components";
@@ -18,7 +17,6 @@ const {
   details,
   chapters,
   description,
-  creator,
   coments,
   rating,
 } = course;
