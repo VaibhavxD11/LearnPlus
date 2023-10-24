@@ -200,3 +200,42 @@ textarea.form-control {
   resize: none;
   height: 6rem;
 }
+
+
+#common-label{
+  justify-content: space-between;
+  display: flex;
+}
+
+.course-label label{
+  padding-left: 1rem;
+}
+
+#course-checkbox{
+  margin-right: 0.5rem;
+}
+
+#note-text{
+  font-size: small;
+  padding-left: 0.5rem;
+}
+
+#fixed-btn {
+  position: fixed;
+  bottom: 20px;
+  /* Adjust as needed to control vertical position */
+  right: 20px;
+}
+
+#plus-img{
+  height: 3rem;
+  width: 3rem;
+}
+
+#fixed-btn {
+  transition: 0.3s;
+}
+
+#fixed-btn:hover{
+  transform: scale(1.15);
+}

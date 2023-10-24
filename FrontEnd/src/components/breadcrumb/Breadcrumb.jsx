@@ -14,7 +14,7 @@ const Breadcrumb = ({ current, courses,login }) => {
             </li>
             {courses && (
               <li className="breadcrumb-item">
-                <Link to="/courses">Courses</Link>
+                <Link to="/colleges">Colleges</Link>
               </li>
             )}
             {login && (

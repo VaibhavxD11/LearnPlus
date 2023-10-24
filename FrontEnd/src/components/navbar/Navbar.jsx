@@ -61,10 +61,10 @@ const Navbar = () => {
                 <Link
                   onClick={closeSidebar}
                   className="nav-link px-3 px-lg-0"
-                  to="/courses"
+                  to="/colleges"
                   activeClassName="nav-link"
                 >
-                  Courses
+                  Colleges
                 </Link>
               </li>
               <li className="nav-item me-5 ">

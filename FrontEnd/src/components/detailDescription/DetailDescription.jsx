@@ -1,6 +1,6 @@
 import React from "react";
 
-const DetailDescription = ({ course_desc, course_info }) => {
+const DetailDescription = ({ description }) => {
   return (
     <div
       className="tab-pane fade"
@@ -10,7 +10,7 @@ const DetailDescription = ({ course_desc, course_info }) => {
     >
       <div className="course-description">
         <h4 className="mb-4">College Info</h4>
-        <p >{course_desc}</p>
+        <p >{description}</p>
         {/* <h5>{course_info.question} :</h5> */}
         {/* <ul>
           {course_info.answer.map((item, index) => (

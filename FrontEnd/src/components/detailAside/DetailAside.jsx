@@ -3,6 +3,7 @@ import React from "react";
 import "./detailAside.css";
 
 const DetailAside = ({
+  link,
   course_img,
   title,
   price_old,
@@ -10,7 +11,7 @@ const DetailAside = ({
   price_discount,
   features }) => {
 
-  const video_src = "https://www.youtube.com/embed/BgXaxIogQcU?si=Uo_CB_12TaoNzeq-";
+  const video_src = link;
   return (
     <aside className="course-aside box p-3">
       <div className="aside-header">

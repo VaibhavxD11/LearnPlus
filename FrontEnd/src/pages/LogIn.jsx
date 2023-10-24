@@ -66,7 +66,7 @@ const LogIn = () => {
       } ); 
       
       console.log(res.data);
-
+      //console.log(getcookie.message);
       console.log(data.email);
       console.log(res.message);
       //delay(1900);

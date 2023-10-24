@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 import {
   Breadcrumb,
@@ -22,6 +24,30 @@ const {
 } = course;
 
 const SingleCourse = () => {
+  const { collegeName } = useParams();
+  console.log(collegeName);
+
+  // const [collegename, setCollegeName] = useState("");
+  // setCollegeName(collegeName);
+  
+  const [colleges, setColleges] = useState([]);
+  const college = async () => {
+    try {
+      const url = "http://localhost:8080/collegeData";
+      const response = await axios.post(url, collegeName);
+      setColleges(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    college();
+  }, []);
+  
+  
+  
+  console.log(colleges.courses);
   return (
     <>
       <Breadcrumb courses current="College" />
@@ -29,30 +55,24 @@ const SingleCourse = () => {
         <div className="container">
           <div className="row gy-4">
             <div className="col-lg-4 order-lg-last ">
-              <DetailAside {...details} />
+              <DetailAside link={colleges.link} />
             </div>
             <div className="col-lg-8">
               <div className="course-main">
                 <div className="main-header">
-                  <DetailHeader {...info} />
+                  <DetailHeader
+                    name={colleges.name}
+                    rank={colleges.rank}
+                  />
                 </div>
                 <div className="main-tabs my-4">
                   <DetailTabs />
                 </div>
                 <div className="main-tab-content box">
                   <div className="tab-content" id="nav-tabContent">
-                    {/* course-curriculum start */}
-                    <DetailCurriculum chapters={chapters} />
-                    {/* course-curriculum end */}
-                    {/* course-description start */}
-                    <DetailDescription {...description} />
-                    {/* course-description end */}
-                    {/* course-instructor start */}
-                    {/* <DetailInstructor {...creator} /> */}
-                    {/* course-instructor end */}
-                    {/* course-reviews start */}
+                    <DetailCurriculum courses={colleges.courses} />
+                    <DetailDescription description={colleges.description} />
                     <DetailReviews coments={coments} rating={rating} />
-                    {/* course-reviews end */}
                   </div>
                 </div>
               </div>

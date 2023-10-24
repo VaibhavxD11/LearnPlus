@@ -13,3 +13,6 @@ export { default as person1 } from "../img/users/person-1.png";
 export { default as person2 } from "../img/users/person-2.png";
 export { default as person3 } from "../img/users/person-3.png";
 export { default as person4 } from "../img/users/person-4.png";
+
+export { default as plus } from "../img/plus.png";
+

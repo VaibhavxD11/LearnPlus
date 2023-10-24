@@ -5,3 +5,4 @@ export { default as Contact } from "./Contact";
 export { default as Courses } from "./Courses";
 export { default as ForgotPassword } from "./ForgotPass";
 export { default as SingleCourse } from "./SingleCourse";
+export { default as CourseForm } from "./CourseForm";

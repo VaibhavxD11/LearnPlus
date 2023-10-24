@@ -1,14 +1,18 @@
 // import React from "react";
 import axios from 'axios';
-import React, {useEffect } from "react";
-import {useNavigate } from "react-router-dom";
+import React, {useState, useEffect } from "react";
+import {Link,useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import plus from "../assets/img/plus.png";
 
 
 import { Breadcrumb, Title, CourseCard, Pagination } from "../components";
 
 import { courses } from "../assets/data/data";
+import SingleCourse from './SingleCourse';
+
+const cardsPerPage = 4;
 
 //const token = global.loginToken;
 
@@ -26,7 +30,17 @@ function showToast() {
 }
 
 const Courses = () => {
+  const [colleges, setColleges] = useState([]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Calculate the starting and ending index of the cards to display on the current page
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const endIndex = currentPage * cardsPerPage;
+  const totalPages = (colleges.length / cardsPerPage);
+
+  // Slice the colleges array to get the cards for the current page
+  
   const navigate = useNavigate();
   
   const coursePage = async () => {
@@ -40,13 +54,36 @@ const Courses = () => {
       //console.log(res.message);
       //navigate("/Courses");
            
-
+      
     } catch (error) {
       navigate("/login");
       console.log(error);
     }
   }
+  
+  const college = async() => {
+    try {
+      const url = "http://localhost:8080/college";
+      const response  = await axios.get(url);
+      console.log(response.data.data);
+      setColleges(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  
+  useEffect(() => {
+    college();
+  }, []);
 
+  
+  const visibleColleges = colleges.slice(startIndex, endIndex);
+  
+  // const description = colleges[0].description;
+  //  console.log(description);
+
+  // console.log(colleges);.desc
   // useEffect(() => {
   //   coursePage();
   // },);
@@ -54,6 +91,7 @@ const Courses = () => {
   // useEffect(() => {
   //   showToast();
   // }, [1]);
+  
 
   return (
     
@@ -61,8 +99,14 @@ const Courses = () => {
       <div>
         <ToastContainer/>
       </div>
-      <Breadcrumb current="Courses" />
-      <Title title="our courses" subtitle="Find the Best for yourself"/>
+      {/* {colleges.map((college, index) => (
+        <SingleCourse
+          name={college.name}
+          // description={description}
+        />
+      ))} */}
+      <Breadcrumb current="Colleges" />
+      <Title title="Colleges" subtitle="Find the Best for yourself"/>
       <section className="courses my-0 ">
         <div className="row justify-content-center">
           <div className="col-12">
@@ -118,12 +162,45 @@ const Courses = () => {
                 aria-labelledby="web-development-tab"
               >
                 <div className="row justify-content-center g-4 ">
-                  {courses
-                    .filter((item) => item.category === "web")
-                    .map((item) => (
-                      <CourseCard key={item.id} {...item} />
-                    ))}
+                  {/* {colleges.map((college, index) => (
+                    <CourseCard
+                      key={index}
+                      collegeImg={college.course_img} // Assuming 'course_img' is the image URL for the college
+                      name={college.name}
+                      rank={college.rank}
+                      description={college.description}
+                      link={college.link}
+                      courses={college.courses} // Assuming 'categories' is an array of category names
+                    />
+                  ))} */}
+                  {visibleColleges.map((college, index) => (
+                    <CourseCard
+                      key={startIndex + index} // Use the actual index in the original array
+                      collegeImg={college.course_img}
+                      name={college.name}
+                      rank={college.rank}
+                      description={college.description}
+                      link={college.link}
+                      courses={college.courses}
+                    />
+                  ))}
+
+
                 </div>
+                  {/* <div className="pagination col-12 justify-content-center">
+                    <button
+                      onClick={() => setCurrentPage(currentPage - 1)}
+                      disabled={currentPage === 1}
+                    >
+                      Previous
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(currentPage + 1)}
+                      disabled={endIndex >= colleges.length}
+                    >
+                      Next
+                    </button>
+                  </div> */}
               </div>
               <div
                 className="tab-pane fade"
@@ -156,10 +233,21 @@ const Courses = () => {
             </div>
           </div>
           <div className="col-12">
-            <Pagination />
+            <Pagination
+              totalPages={totalPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           </div>
         </div>
       </section>
+      <div>
+        <Link to={"/admin"}>
+          <button id="fixed-btn" >
+            <img src={plus} alt="" id="plus-img" />
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

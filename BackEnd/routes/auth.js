@@ -2,6 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const { User } = require("../models/user");
 const { Contact } = require("../models/contactus");
+const { College } = require("../models/college");
 const jwt = require("jsonwebtoken");
 const authenticate = require("../middleware/authenticate");
 const express = require("express");
@@ -96,10 +97,60 @@ router.get("/login", async(req, res) => {
     res.status(200).send({message:"OK"});
 });
 
-router.get("/Courses", authenticate, (req, res) => {
+router.get("/Courses", authenticate, async(req, res) => {
     console.log("Middleware");
     res.status(200).send({ message: "This is the Courses Page" });
 });
+
+router.get("/college", async (req, res) => {
+    try {
+        const colleges = await College.find({});
+        console.log(colleges);
+        res.status(200).send({ data: colleges, message:"Success" });
+    } catch (error) {
+        console.error('Error fetching colleges:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+})
+
+router.post("/collegeData", async (req, res) => {
+    try {
+        const collegeName = Object.keys(req.body)[0];
+        console.log(collegeName);
+        const colleges = await College.findOne({name:collegeName});
+        console.log(colleges);
+        res.status(200).send({ data: colleges, message: "Success" });
+    } catch (error) {
+        console.error('Error fetching colleges:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+})
+
+router.post("/admin", async (req, res) => {
+    try {
+        const { name, rank, description, link, courses } = req.body;
+
+        const college = new College({
+            name,
+            rank,
+            description,
+            link,
+            courses,
+        });
+        let collegeExist = await College.findOne({ name: name })
+        if (collegeExist) {
+            return res.status(422).send({ message: "Already Exist" });
+        }
+        console.log(req.body);
+        await college.save();
+        return res.status(201).json({ message: 'College saved successfully' });
+    } catch (error) {
+        console.error('Error saving college:', error);
+        res.status(500).json({ message: 'Failed to save college', error: error.message });
+    }
+
+});
+
 
 router.post("/contact", async(req, res) => {
     try {
