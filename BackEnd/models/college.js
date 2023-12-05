@@ -5,6 +5,7 @@ const collegeSchema = new mongoose.Schema({
     rank: String,
     description: String,
     link: String,
+    image: String,
     courses: {
         type: Object,
         of: Array,

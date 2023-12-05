@@ -23,14 +23,14 @@ const CourseCard = ({
       <article className="course">
         <Link to={`/colleges/${name}`}>
           <div className="course-header">
-            <img src={ tech1} alt={name} className="rounded" />
+            <img src={ course_img} alt={name} className="rounded" />
           </div>
           <h3 className="course-title my-3 fs-5">{ name}</h3>
           <div className="course-footer">
             
             <div className="footer-stars mt-2 d-flex">
-              <span className="me-1 fw-bold">({star})</span>
-              <Stars stars={star} />
+              {/* <span className="me-1 fw-bold">({star})</span> */}
+              <Stars stars={rank} />
             </div>
           </div>
         </Link>

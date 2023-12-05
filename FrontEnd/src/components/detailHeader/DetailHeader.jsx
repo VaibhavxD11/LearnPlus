@@ -7,6 +7,7 @@ import "./detailHeader.css";
 const DetailHeader = ({
   name,
   rank,
+  established,
   stars_average,
   reviews,
   students,
@@ -18,11 +19,9 @@ const DetailHeader = ({
     <div className="box">
       <h2 className="text-capitalize mb-3">{ name}</h2>
       <div className="header-rating d-flex mb-1 ">
-        <span className="me-1">({stars_average})</span>
-        <Stars stars={stars_average} />
-        <span className="ms-1">({reviews} Reviews)</span>
+        <Stars stars={rank} />
       </div>
-      <p className="mb-1">Established - 1958</p>
+      <p className="mb-1">Established - { established}</p>
       <p className="mb-1">
         NIRF Ranking - <span className="theme-clr">{ rank}</span>
       </p>

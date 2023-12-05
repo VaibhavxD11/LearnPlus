@@ -1,8 +1,13 @@
 import React, { useState, useRef } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 const CourseForm = () => {
+
+    const navigate = useNavigate();
+    const [image, setImage] = useState("");
+
 
     const [inputFields, setInputFields] = useState([""]);
     const [inputData, setInputData] = useState({});
@@ -22,12 +27,37 @@ const CourseForm = () => {
     
     const handleChange = (e) => {
         const { name, value } = e.target;
-        // setData({ ...data, [name]: value });
-        setInputData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+
+        // Split the input value by ':'
+        const parts = value.split(':');
+
+        if (parts.length === 2) {
+            // Format the left part (before ':') to be all uppercase
+            const formattedLeftPart = parts[0].toUpperCase();
+
+            // Format the right part (after ':') with first letter of each word capitalized
+            const formattedRightPart = parts[1]
+                .split(' ')
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(' ');
+
+            // Combine the formatted parts with ':'
+            const formattedValue = `${formattedLeftPart}: ${formattedRightPart}`;
+
+            setInputData((prevData) => ({
+                ...prevData,
+                [name]: formattedValue,
+            }));
+        } else {
+            // If the input does not match the expected format, set it as is
+            setInputData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }));
+        }
     };
+
+
 
 
     const formattedData = {};
@@ -73,6 +103,7 @@ const CourseForm = () => {
             rank: formattedData['rank'],
             description: formattedData['description'],
             link: formattedData['link'],
+            image: imageUrl,
             courses,
         };
         try {
@@ -80,6 +111,7 @@ const CourseForm = () => {
             const { data: res } = await axios.post(url, data);
             
             console.log(res.message);
+            navigate("/Colleges");
 
         }
         catch (error) {
@@ -94,6 +126,34 @@ const CourseForm = () => {
         }
 
     }
+
+    //Image Upload
+
+    let imageUrl;
+
+    const handleImageSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const data = new FormData()
+            data.append("file", image)
+            data.append("cloud_name", "djejbjs6f")
+            data.append("upload_preset", "zzs0kohb")
+
+            const res = await fetch("https://api.cloudinary.com/v1_1/djejbjs6f/image/upload", {
+                method: "post",
+                body: data
+            })
+
+            const imgData = await res.json()
+            imageUrl = imgData.url.toString()
+            console.log(imageUrl);
+        } catch (error) {
+            console.log(error);
+        }
+      
+    }
+  
+
 
     return (
         <>
@@ -135,6 +195,20 @@ const CourseForm = () => {
                                             required
                                             className="form-control"
                                         ></textarea>
+                                    </div>
+                                    <div className="form-group mb-3" id="image-upload">
+                                        <div id="file-input">
+                                            <input
+                                                type="file"
+                                                onChange={(e) => setImage(e.target.files[0])}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        <div id="upload-button">
+                                            <button type="submit" className="theme-btn" onClick={handleImageSubmit}>
+                                                Upload
+                                            </button>
+                                        </div>
                                     </div>
                                     <div className="form-group mb-3">
                                         <input

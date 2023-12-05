@@ -4,11 +4,19 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Breadcrumb } from "../components";
+import { Breadcrumb, Navbar } from "../components";
 
 
 
 const LogIn = () => {
+
+  const [checkLogin, setCheckLogin] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  localStorage.setItem('checkLogin', "");
+  localStorage.setItem('userEmail', "");
+  localStorage.setItem('userName', "");
+
   function delay(milliseconds) {
     return new Promise((resolve) => {
       setTimeout(resolve, milliseconds);
@@ -52,6 +60,7 @@ const LogIn = () => {
     
   };
   
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,10 +76,22 @@ const LogIn = () => {
       
       console.log(res.data);
       //console.log(getcookie.message);
+      global.user = data.email;
       console.log(data.email);
       console.log(res.message);
       //delay(1900);
-      navigate("/Courses");
+      global.isLogin = true;
+      <Navbar
+        email={data.email}
+      />
+
+      const newValue = "Logged In";
+      setCheckLogin(newValue);
+      setUserEmail(data.email);
+      localStorage.setItem('userEmail', data.email);
+      localStorage.setItem('checkLogin', newValue);
+
+      navigate("/Colleges");
 
       // toast.success('🦄 Success', {
       //   position: "top-center",

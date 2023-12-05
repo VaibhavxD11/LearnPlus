@@ -63,6 +63,7 @@ const SingleCourse = () => {
                   <DetailHeader
                     name={colleges.name}
                     rank={colleges.rank}
+                    established={colleges.established}
                   />
                 </div>
                 <div className="main-tabs my-4">

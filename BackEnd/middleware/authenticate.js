@@ -20,7 +20,7 @@ const Authenticate = async(req,res,next) => {
         // res.cookie("jwtoken", token, {
         //     expires: new Date(Date.now() + 60000),
         // });
-        console.log("token: "+req.token);
+        //console.log("token: "+req.token);
 
         next();
     } catch (error) {

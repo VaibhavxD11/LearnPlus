@@ -239,3 +239,31 @@ textarea.form-control {
 #fixed-btn:hover{
   transform: scale(1.15);
 }
+
+#search-box{
+  background-color: var(--white);
+    border-radius: 0.4rem;
+    box-shadow: var(--shadow);
+    padding: 0.2rem 0.2rem;
+    margin-bottom: 5rem;
+}
+
+#image-upload{
+  display: flex;
+  justify-content: space-between;
+}
+
+#file-input{
+  margin-right: 1rem;
+}
+
+#upload-button{
+  justify-content: center;
+}
+
+#recommendations-header{
+  margin-top: 3rem;
+}
+
+
+  

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Title } from "..";
 
-import instructorImg from "../../assets/img/bai-img.jpg";
+import instructorImg from "../../assets/img/bai-img.png";
 
 import "./instructor.css";
 

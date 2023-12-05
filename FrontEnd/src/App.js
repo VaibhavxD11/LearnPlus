@@ -8,7 +8,7 @@ const App = () => {
       <Navbar />
       <ConfigRoutes />
       <Footer/>
-      {/* <StyleSwitcher/> */}
+      <StyleSwitcher/>
     </div>
   );
 };

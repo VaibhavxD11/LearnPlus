@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useGlobalContext } from "../../context/context";
 
 import "./navbar.css";
 
-const Navbar = () => {
+
+const Navbar = ({ name, email }) => {
   const {
     toggleSubmenu,
     openSidebar,
@@ -13,6 +14,37 @@ const Navbar = () => {
     closeSidebar,
     isSubmenu,
   } = useGlobalContext();
+
+
+  const checkLogin = localStorage.getItem('checkLogin');
+  const userEmail = localStorage.getItem('userEmail');
+  const userName = localStorage.getItem('userName');
+
+
+  const clearCookies = () => {
+    // Set the expiration date to a past date
+    const pastDate = new Date(0).toUTCString();
+
+    // Get an array of all cookies
+    const cookies = document.cookie.split(';');
+
+    // Loop through each cookie and expire it
+    cookies.forEach((cookie) => {
+      const [name] = cookie.trim().split('=');
+      document.cookie = `${name}=; expires=${pastDate}; path=/`;
+    });
+  };
+
+  const handleLogout = () => {
+    // Clear cookies
+    clearCookies();
+
+    // Perform any additional cleanup or API calls here, if needed
+    // ...
+
+    // Redirect or update state as needed
+  };
+  
 
   return (
     <header className="header py-2">
@@ -24,7 +56,7 @@ const Navbar = () => {
         <div className="container d-flex justify-content-between ">
           <div className="navbar-brand">
             <Link to="/" className=" text-uppercase fs-3 fw-bold">
-              <span>lrn</span>plus
+              <span>learn</span>plus
             </Link>
           </div>
           <button
@@ -68,18 +100,41 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item me-5 ">
-                <a onClick={toggleSubmenu} className=" px-3 px-lg-0">
-                  User
-                  <i
-                    className={`fas fa-chevron-down fs-6 ms-2 ms-lg-1 ${
-                      isSubmenu ? "rotate" : null
-                    } `}
-                  ></i>
-                </a>
-                <ul
-                  className={`sub-menu rounded-2 px-lg-2 ${
-                    isSubmenu ? "active" : ""
-                  } `}
+                {checkLogin == "Logged In" ? (
+                  <>
+                    <a onClick={toggleSubmenu} className=" px-3 px-lg-0">
+                      User
+                      <i className={`fas fa-chevron-down fs-6 ms-2 ms-lg-1 ${isSubmenu ? "rotate" : null} `}
+                      ></i>
+                    </a>
+                    <ul className={`sub-menu rounded-2 px-lg-2 ${isSubmenu ? "active" : ""} `}>
+                      <li className="nav-item" id="user-details">
+                        <div className='row justify-content-center'>
+                          {userName}
+                        </div>
+                      </li>
+                      <li className="nav-item" id="user-details">
+                        <div className='row justify-content-center'>
+                          {userEmail}
+                        </div>
+                      </li>
+                      <li className="nav-item">
+                        <div className='row justify-content-center'>
+                          <button type="submit" className="theme-btn " id='logout-btn' onClick={handleLogout}>
+                            Log Out
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  </>
+                ) : (
+                    <>
+                      <a onClick={toggleSubmenu} className=" px-3 px-lg-0">
+                        User
+                        <i className={`fas fa-chevron-down fs-6 ms-2 ms-lg-1 ${isSubmenu ? "rotate" : null} `}
+                          ></i>
+                      </a>
+                    <ul className={`sub-menu rounded-2 px-lg-2 ${isSubmenu ? "active" : ""} `}
                 >
                   <li className="nav-item">
                     <Link
@@ -100,6 +155,9 @@ const Navbar = () => {
                     </Link>
                   </li>
                 </ul>
+
+                    </>
+                )}
               </li>
               <li className="nav-item ">
                 <Link
@@ -120,3 +178,63 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+// <a onClick={toggleSubmenu} className=" px-3 px-lg-0">
+//   User
+//   <i
+//     className={`fas fa-chevron-down fs-6 ms-2 ms-lg-1 ${isSubmenu ? "rotate" : null
+//       } `}
+//   ></i>
+// </a>
+// {
+//   checkLogin == "Logged In" ? (
+//     <ul
+//       className={`sub-menu rounded-2 px-lg-2 ${isSubmenu ? "active" : ""
+//         } `}
+//     >
+//       <li className="nav-item" id="user-details">
+//         <div className='row justify-content-center'>
+//           {userName}
+//         </div>
+//       </li>
+//       <li className="nav-item" id="user-details">
+//         <div className='row justify-content-center'>
+//           {userEmail}
+//         </div>
+//       </li>
+//       <li className="nav-item">
+//         <div className='row justify-content-center'>
+//           <button type="submit" className="theme-btn " id='logout-btn' onClick={handleLogout}>
+//             Log Out
+//           </button>
+//         </div>
+//       </li>
+//     </ul>
+//   ) : (
+//   <ul
+//     className={`sub-menu rounded-2 px-lg-2 ${isSubmenu ? "active" : ""
+//       } `}
+//   >
+//     <li className="nav-item">
+//       <Link
+//         onClick={closeSidebar}
+//         to="/login"
+//         className="nav-link px-5 px-lg-0 "
+//       >
+//         Log In
+//       </Link>
+//     </li>
+//     <li className="nav-item">
+//       <Link
+//         onClick={closeSidebar}
+//         to="signup"
+//         className="nav-link px-5 px-lg-0"
+//       >
+//         Sign Up
+//       </Link>
+//     </li>
+//   </ul>
+// )
+// }

@@ -6,6 +6,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import plus from "../assets/img/plus.png";
 
+import search from "../assets/img/search.png";
+
+
 
 import { Breadcrumb, Title, CourseCard, Pagination } from "../components";
 
@@ -33,11 +36,14 @@ const Courses = () => {
   const [colleges, setColleges] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Calculate the starting and ending index of the cards to display on the current page
   const startIndex = (currentPage - 1) * cardsPerPage;
   const endIndex = currentPage * cardsPerPage;
-  const totalPages = (colleges.length / cardsPerPage);
+  
+  // const totalPages = Math.ceil(colleges.length / cardsPerPage);
+  
 
   // Slice the colleges array to get the cards for the current page
   
@@ -45,12 +51,16 @@ const Courses = () => {
   
   const coursePage = async () => {
     try {
-      console.log(1);
+      //console.log(1);
       const url = "http://localhost:8080/Courses";
       const { res } = await axios.get(url, {
         withCredentials:true,
       });
-      showToast();
+      if (global.isLogin) {
+        showToast();
+        global.isLogin = false;
+      }
+   
       //console.log(res.message);
       //navigate("/Courses");
            
@@ -65,28 +75,79 @@ const Courses = () => {
     try {
       const url = "http://localhost:8080/college";
       const response  = await axios.get(url);
-      console.log(response.data.data);
+      //console.log(response.data.data);
       setColleges(response.data.data);
     } catch (error) {
       console.log(error);
     }
   }
-  
+
   
   useEffect(() => {
     college();
-  }, []);
+  },);
 
   
-  const visibleColleges = colleges.slice(startIndex, endIndex);
+  // const filteredColleges = colleges.filter((college) =>
+  //   college.name.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+  const filteredColleges = colleges.filter((college) => {
+    const query = searchQuery.toLowerCase();
+
+    if (college.name.toLowerCase().includes(query)) {
+      return college;
+    }
+
+    if (college.courses) {
+      for (const courseName in college.courses) {
+        const course = college.courses[courseName];
+        if (
+          courseName.toLowerCase().includes(query) ||
+          (Array.isArray(course) && course.some((item) => item.toLowerCase().includes(query)))
+        ) {
+          return college;
+        }
+      }
+    }
+
+    return null;
+  });
+
+   
+  const totalFilteredColleges = filteredColleges.length;
+  const totalPages = Math.ceil(totalFilteredColleges / cardsPerPage);
+
+  // Calculate the new startIndex and endIndex based on the current page
+  const newStartIndex = (currentPage - 1) * cardsPerPage;
+  const newEndIndex = currentPage * cardsPerPage;
+
+  // Slice the filtered results based on the new indexes
+  const visibleFilteredColleges = filteredColleges.slice(newStartIndex, newEndIndex);
+
+
+
+
+  
+
+  // const handleSearch = () => {
+  //   onSearch(searchQuery);
+  // };
+
+  const handleClear = () => {
+    setSearchQuery('');
+    //onSearch(''); // Clear the search results
+  };
+
   
   // const description = colleges[0].description;
   //  console.log(description);
 
   // console.log(colleges);.desc
-  // useEffect(() => {
-  //   coursePage();
-  // },);
+  useEffect(() => {
+    coursePage();
+  },);
+
 
   // useEffect(() => {
   //   showToast();
@@ -110,7 +171,7 @@ const Courses = () => {
       <section className="courses my-0 ">
         <div className="row justify-content-center">
           <div className="col-12">
-            <nav>
+            {/* <nav>
               <div
                 className="nav nav-tabs mb-4 border-0 justify-content-center "
                 id="nav-tab"
@@ -153,7 +214,29 @@ const Courses = () => {
                   Design
                 </button>
               </div>
-            </nav>
+            </nav> */}
+            <div className="container ">
+              <div className="row justify-content-center">
+                <div className="col-md-8 col-lg-7 col-xl-6">
+                  <div className="box" id='search-box'>
+                      <div className="form-group">
+                        <input
+                            id='search-bar'
+                            type="text"
+                            name="search"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            required
+                            placeholder="Search Colleges"
+                            className="form-control"
+                        />
+                    </div>
+                  <div>
+                </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="tab-content " id="nav-tabContent">
               <div
                 className="tab-pane fade show active"
@@ -173,10 +256,10 @@ const Courses = () => {
                       courses={college.courses} // Assuming 'categories' is an array of category names
                     />
                   ))} */}
-                  {visibleColleges.map((college, index) => (
+                  {visibleFilteredColleges.map((college, index) => (
                     <CourseCard
-                      key={startIndex + index} // Use the actual index in the original array
-                      collegeImg={college.course_img}
+                      key={startIndex + index} // Customize the key as needed
+                      course_img={college.image}
                       name={college.name}
                       rank={college.rank}
                       description={college.description}
@@ -242,11 +325,13 @@ const Courses = () => {
         </div>
       </section>
       <div>
-        <Link to={"/admin"}>
-          <button id="fixed-btn" >
-            <img src={plus} alt="" id="plus-img" />
-          </button>
-        </Link>
+        {global.user=="admin@gmail.com" ? (
+          <Link to="/admin">
+            <button id="fixed-btn">
+              <img src={plus} alt="" id="plus-img" />
+            </button>
+          </Link>
+        ) : null}
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ const path = require('path');
 app.set("view engine", "ejs");
 var nodemailer = require("nodemailer");
 const cookieParser = require("cookie-parser");
+const { Review } = require("../models/review");
 app.use(cookieParser());
 
 // app.set('views', path.join(__dirname, 'views'));
@@ -105,7 +106,7 @@ router.get("/Courses", authenticate, async(req, res) => {
 router.get("/college", async (req, res) => {
     try {
         const colleges = await College.find({});
-        console.log(colleges);
+        //console.log(colleges);
         res.status(200).send({ data: colleges, message:"Success" });
     } catch (error) {
         console.error('Error fetching colleges:', error);
@@ -116,9 +117,9 @@ router.get("/college", async (req, res) => {
 router.post("/collegeData", async (req, res) => {
     try {
         const collegeName = Object.keys(req.body)[0];
-        console.log(collegeName);
+        //console.log(collegeName);
         const colleges = await College.findOne({name:collegeName});
-        console.log(colleges);
+        //console.log(colleges);
         res.status(200).send({ data: colleges, message: "Success" });
     } catch (error) {
         console.error('Error fetching colleges:', error);
@@ -128,13 +129,14 @@ router.post("/collegeData", async (req, res) => {
 
 router.post("/admin", async (req, res) => {
     try {
-        const { name, rank, description, link, courses } = req.body;
+        const { name, rank, description, link,image, courses } = req.body;
 
         const college = new College({
             name,
             rank,
             description,
             link,
+            image,
             courses,
         });
         let collegeExist = await College.findOne({ name: name })
@@ -150,6 +152,34 @@ router.post("/admin", async (req, res) => {
     }
 
 });
+
+router.post("/review", async (req, res) => {
+    try {
+        const { email, date, college, review } = req.body;
+        if (!email || !date || !college || !review) {
+            return res.status(400).send({ message: "Fill All Fields" })
+        }
+        let userExist = await User.findOne({ email });
+        let name = userExist.name;
+        await new Review({ ...req.body, name }).save();
+        return res.status(200).send({message: "Success" });
+    } catch (error) {
+        console.error('Error posting review:', error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+router.post("/getreview", async (req, res) => {
+    try {
+        const college  = Object.keys(req.body)[0];
+        let reviewsForCollege = await Review.find({ college });
+        return res.status(200).send({ data: reviewsForCollege, message: "Success" });
+
+
+    } catch (error) {
+        console.log("Error");
+    }
+})
 
 
 router.post("/contact", async(req, res) => {
